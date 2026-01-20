@@ -150,3 +150,44 @@ body, h1, h2, h3, h4, h5, h6, .site-page {
     backdrop-filter: blur(20px);
     border-radius: 15px 15px 0 0 !important;
 }
+/* --- 自定义鼠标指针 --- */
+/* CDN 高速版测试 */
+body {
+    cursor: url(https://fastly.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur), auto !important;
+}
+a, img, button, #card-info-btn, .aplayer .aplayer-icon {
+    cursor: url(https://fastly.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur), pointer !important;
+}
+/* ==================================
+   看板娘 (Live2D) 位置修正
+   ================================== */
+
+/* 1. 把看板娘从左边挪到右边 */
+#waifu {
+    left: auto !important;       /* 撤销左对齐 */
+    right: 20px !important;      /* 改为靠右 20px */
+    bottom: 0 !important;        /* 紧贴底部 */
+    z-index: 1000 !important;    /* 提高层级，防止被页脚挡住 */
+}
+
+/* 2. 修正对话框的位置 (防止对话框跑到屏幕外面去) */
+#waifu-tips {
+    width: 200px !important;
+    left: auto !important;
+    right: 0 !important;         /* 对话框也靠右 */
+    margin: -60px 0 0 0 !important; /* 调整一下高度 */
+}
+
+/* 3. 修正工具栏 (换衣服那些按钮) 的位置 */
+#waifu-tool {
+    left: auto !important;
+    right: 0 !important;         /* 按钮也靠右排列 */
+    top: -60px !important;       /* 放在头顶位置 */
+}
+
+/* 4. 在小屏幕(手机)下自动隐藏，防止挡住内容 */
+@media (max-width: 768px) {
+    #waifu {
+        display: none !important;
+    }
+}
