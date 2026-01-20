@@ -1,0 +1,24 @@
+/* 强力磨砂玻璃代码 */
+#recent-posts > .recent-post-item,
+.card-widget,
+#post,
+#page,
+#archive,
+#tag,
+#category,
+#page-header.nav-fixed #nav {
+    background: rgba(255, 255, 255, 0.5) !important; /* 透明度 0.5 */
+    backdrop-filter: blur(20px) !important; /* 模糊度 20px */
+    -webkit-backdrop-filter: blur(20px) !important;
+}
+
+/* 首页大标题文字阴影 */
+#site-title, #site-subtitle {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); /* 黑色阴影，防背景太亮看不清字 */
+    font-weight: bold; /* 加粗 */
+}
+
+/* 首页的大图稍微加深一点滤镜，让文字更突出 */
+#page-header:before {
+    background-color: rgba(0,0,0,0.3) !important; /* 叠加一层30%的黑色遮罩 */
+}
