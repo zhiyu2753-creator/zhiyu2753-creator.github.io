@@ -1,24 +1,152 @@
-/* 强力磨砂玻璃代码 */
-#recent-posts > .recent-post-item,
-.card-widget,
-#post,
-#page,
-#archive,
-#tag,
-#category,
-#page-header.nav-fixed #nav {
-    background: rgba(255, 255, 255, 0.5) !important; /* 透明度 0.5 */
-    backdrop-filter: blur(20px) !important; /* 模糊度 20px */
-    -webkit-backdrop-filter: blur(20px) !important;
+/* ==================================
+   Zhiyu 的博客精装修 - 终极整合版
+   ================================== */
+
+/* 1. 引入字体：思源宋体 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&display=swap');
+
+/* 2. 全局应用字体 */
+body, h1, h2, h3, h4, h5, h6, .site-page {
+    font-family: 'Noto Serif SC', serif !important;
 }
 
-/* 首页大标题文字阴影 */
-#site-title, #site-subtitle {
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); /* 黑色阴影，防背景太亮看不清字 */
-    font-weight: bold; /* 加粗 */
+/* 3. 核心变量覆盖：让卡片背景半透明 */
+:root {
+    --card-bg: rgba(255, 255, 255, 0.6) !important;
+    --btn-default-bg: rgba(255, 255, 255, 0.6) !important;
 }
 
-/* 首页的大图稍微加深一点滤镜，让文字更突出 */
-#page-header:before {
-    background-color: rgba(0,0,0,0.3) !important; /* 叠加一层30%的黑色遮罩 */
+/* 4. 磨砂玻璃特效 + 大圆角 + 质感白边 */
+.card-widget, .recent-post-item, #post, #page, #archive, #tag, #category, #page-header.nav-fixed #nav {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* 兼容 Safari */
+    border-radius: 15px !important;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* 5. 【关键】去掉顶部的“蓝色大方块”，让背景图通顶 */
+
+/* 首页大标题文字加阴影，防止背景太亮看不清 */
+#site-title, #site-subtitle, #post-info .post-title, #post-info #post-meta {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    color: white !important;
+}
+
+/* 6. 去掉底部“蓝条”，改为完全透明 */
+#footer {
+    background: transparent !important;
+    color: #000; /* 页脚文字黑色 */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8); /* 文字加白边 */
+}
+#footer::before {
+    background: transparent !important;
+}
+
+/* 7. 滚动条美化 (细长风格) */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+/* --- 修复文章页顶部蓝块 --- */
+#page-header.post-bg {
+    background: transparent !important;
+}
+#page-header.post-bg:before {
+    background: transparent !important;
+}
+
+/* ==================================
+   Zhiyu 的播放器美化 (磨砂玻璃版)
+   ================================== */
+
+/* 1. 播放器主体变身：透明 + 磨砂 + 圆角 */
+.aplayer.aplayer-fixed .aplayer-body {
+    background: rgba(255, 255, 255, 0.6) !important; /* 半透明白 */
+    backdrop-filter: blur(20px);        /* 模糊特效 */
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 15px !important;     /* 圆角 */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* 淡淡白边 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; /* 柔和阴影 */
+}
+
+/* 2. 歌词和信息的背景去掉 (防止遮挡磨砂效果) */
+.aplayer.aplayer-fixed .aplayer-info {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+/* 3. 歌曲列表也改成磨砂的 (点开列表时) */
+.aplayer.aplayer-fixed .aplayer-list {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(20px);
+    border-radius: 15px 15px 0 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* 4. 歌曲列表里正在播放的那首歌，底色变蓝，文字变白 */
+.aplayer .aplayer-list ol li.aplayer-list-light {
+    background: rgba(64, 158, 255, 0.2) !important;
+}
+.aplayer .aplayer-list ol li.aplayer-list-light .aplayer-list-cur {
+    background-color: #409EFF !important; /* 左边的小竖条 */
+}
+
+/* 5. 隐藏播放器左边那个丑丑的小箭头开关，改成圆润的 */
+.aplayer.aplayer-fixed .aplayer-miniswitcher {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 0 15px 15px 0 !important;
+}
+
+/* ==================================
+   Zhiyu 的播放器美化 (Mini 隐形版)
+   ================================== */
+
+/* 1. 播放器主体：平时缩成一个小球 */
+.aplayer.aplayer-fixed .aplayer-body {
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 50px !important;  /* 变成完全的椭圆/圆 */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* 增加一个过渡动画，让展开更丝滑 */
+    transition: all 0.3s ease; 
+}
+
+/* 2. 只有当鼠标悬停在上面时，才恢复圆角矩形 */
+.aplayer.aplayer-fixed .aplayer-body:hover {
+    border-radius: 15px !important;
+}
+
+/* 3. 隐藏左侧那个丑丑的收缩按钮 (Mini模式下不需要它) */
+.aplayer.aplayer-fixed .aplayer-miniswitcher {
+    display: none !important;
+}
+
+/* 4. Mini 模式下的封面图：变成圆的 */
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+    left: -66px !important; /* 平时往左藏一点，只露出一半，像个侧边抽屉 */
+    border-radius: 50% !important; /* 纯圆 */
+}
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+    left: 0 !important; /* 鼠标放上去就弹出来 */
+    border-radius: 15px !important; /* 变回长条 */
+}
+
+/* 5. 歌词栏等其他修饰 (保持不变) */
+.aplayer.aplayer-fixed .aplayer-info {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+.aplayer.aplayer-fixed .aplayer-list {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(20px);
+    border-radius: 15px 15px 0 0 !important;
 }
